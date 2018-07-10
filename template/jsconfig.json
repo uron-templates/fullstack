@@ -8,8 +8,10 @@
             "@s-service/*": ["./src/server/service/*"],
             "@s-utils/*": ["./src/server/utils/*"],
             "@s-middles/*": ["./src/server/middleware/*"],
-            "@controller": ["./src/server/controller/*"],
-            "@model": ["./src/server/model/*"]
+            {{#db}}
+            "@model": ["./src/server/model/*"],
+            {{/db}}
+            "@controller": ["./src/server/controller/*"]
         }
     }
 }

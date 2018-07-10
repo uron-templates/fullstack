@@ -17,7 +17,8 @@ module.exports = {
       Object.assign(
         metalsmith.metadata(),
         {
-          templateVersion,
+          graphql:true,
+          db:true
         },
       )
     }
@@ -45,17 +46,11 @@ module.exports = {
       type: 'string',
       required: false,
       message: 'Project description',
-      default: 'A uron project',
+      default: 'A uron fullstack project',
     },
     author: {
       type: 'string',
       message: 'Author',
-    },
-    staticRootDir: {
-      type: 'string',
-      required: true,
-      message: 'Folder of static files',
-      default: './public'
     },
     graphql: {
       type: 'confirm',
@@ -94,6 +89,7 @@ module.exports = {
   filters: {
     'public/**/*': 'staticRootDir === "./public"',
     'src/server/schema/**/*': 'graphql',
+    'src/controller/graphql.js': 'graphql',
     'src/server/model/**/*': 'db',
     'src/server/service/base/**/*': 'db',
   },
