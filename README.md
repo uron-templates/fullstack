@@ -1,4 +1,4 @@
-# uron-template-person
+# uron-template-fullstack
 
 ## 使用指南
 要跑起来一个项目，需要两步：
@@ -8,7 +8,7 @@
 ### 初始化项目
 uron-init <template-name> [project-name]
 
-如下语句，使用 person 模板初始化一个叫 my-project 的项目
+如下语句，使用 fullstack 模板初始化一个叫 my-project 的项目
 ```
 uron init fullstack my-project
 ```

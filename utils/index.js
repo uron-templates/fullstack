@@ -78,7 +78,7 @@ To get started:
     )}${lintMsg(data)}npm run dev`
   )}
 
-Documentation can be found at https://uron-templates.github.io/person
+Documentation can be found at https://github.com/uron-templates/fullstack
 `
   console.log(message)
 }
