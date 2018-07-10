@@ -1,0 +1,8 @@
+{
+  "name": "uron-template-openstack",
+  "version": "0.0.1",
+  "description": "FrontEnd use vusion ; server use koa2",
+  "scripts": {
+  },
+  "license": "MIT"
+}
