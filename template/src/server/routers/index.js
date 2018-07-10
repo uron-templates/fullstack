@@ -2,11 +2,12 @@ const router = require('koa-router')();
 const { graphqlKoa, graphiqlKoa } = require('apollo-server-koa');
 const schema = require('../schema');
 const home = require('./home');
+const graphqlController = require('@controller/graphql');
 
 router.use('', home.routes());
 
 // graphql
-router.post('/graphql', graphqlKoa({ schema }));
+router.post('/graphql', graphqlController.patchFilesToBody, graphqlKoa({ schema }));
 router.get('/graphql', graphqlKoa({ schema }));
 router.get(
     '/graphiql',

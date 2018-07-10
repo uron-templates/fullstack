@@ -2,7 +2,7 @@
  * @Author: xuefei
  * @Date: 2018-07-10 09:57:45
  * @Last Modified by: xuefei
- * @Last Modified time: 2018-07-10 15:52:14
+ * @Last Modified time: 2018-07-10 16:29:06
  */
 
 // 将.env中配置到环境变量
@@ -17,10 +17,9 @@ const auth = require('./middleware/auth');
 const log = require('@s-utils/logger').createLogger('app');
 const routers = require('./routers/index');
 // 公共包
-const koaBody = require('koa-bodyparser');
 const Koa = require('koa');
 const config = require('config');
-const body = require('koa-better-body');
+const koaBody = require('koa-better-body');
 const session = require('koa-session');
 const convert = require('koa-convert');
 
@@ -74,15 +73,17 @@ module.exports = (options) => {
     }));
     app.use(bunyanLogger.requestIdContext());
     app.use(bunyanLogger.requestLogger());
-    handleCustomCode(app);
     cache(app);
     app.use(session({
         key,
         store,
         maxAge: 8 * 60 * 60 * 1000,
     }, app));
+    app.use(koaBody({
+        multipart: false,
+    }));
+    handleCustomCode(app);
     // 业务逻辑
-    app.use(koaBody());
     app.use(auth());
 
     // 定义code方法
