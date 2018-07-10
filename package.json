@@ -1,0 +1,27 @@
+{
+  "name": "uron-template-fullstack",
+  "version": "0.0.1",
+  "description": "an uron template of fullstack",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uron-templates/fullstack.git"
+  },
+  "keywords": [
+    "uron",
+    "koa",
+    "server"
+  ],
+  "author": "lingximu(lingxiweb@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/uron-templates/fullstack/issues"
+  },
+  "homepage": "https://github.com/uron-templates/fullstack#readme",
+  "dependencies": {
+    "chalk": "^2.4.1"
+  },
+  "devDependencies": {
+  }
+}
