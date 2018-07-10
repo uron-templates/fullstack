@@ -1,6 +1,6 @@
 module.exports = {
     type: 'app',
     root: __dirname,
-    port: 8001,
+    port: {{ port }},
     entry: './src/server/app',
 };

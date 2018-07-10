@@ -52,6 +52,16 @@ module.exports = {
       type: 'string',
       message: 'Author',
     },
+    port: {
+      type: 'string',
+      message: 'Listen port',
+      default: '8001'
+    },
+    ndp: {
+      type: 'confirm',
+      message: 'Use ndp(自动部署)?',
+      default: true
+    },
     graphql: {
       type: 'confirm',
       message: 'Use graphql?',
@@ -69,14 +79,14 @@ module.exports = {
         'Should we run `npm install` for you after the project has been created? (recommended)',
       choices: [
         {
-          name: 'Yes, use NPM',
-          value: 'npm',
-          short: 'npm',
-        },
-        {
           name: 'Yes, use Yarn',
           value: 'yarn',
           short: 'yarn',
+        },
+        {
+          name: 'Yes, use NPM',
+          value: 'npm',
+          short: 'npm',
         },
         {
           name: 'No, I will handle that myself',
@@ -89,8 +99,10 @@ module.exports = {
   filters: {
     'public/**/*': 'staticRootDir === "./public"',
     'src/server/schema/**/*': 'graphql',
-    'src/controller/graphql.js': 'graphql',
+    'src/server/controller/graphql*': 'graphql',
     'src/server/model/**/*': 'db',
+    "db-migrate/**/*":'db',
+    "ndp/**":'ndp',
     'src/server/service/base/**/*': 'db',
   },
   complete: function(data, { chalk }) {
