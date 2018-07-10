@@ -55,7 +55,7 @@ module.exports = {
     port: {
       type: 'string',
       message: 'Listen port',
-      default: '8001'
+      default: '8000'
     },
     ndp: {
       type: 'confirm',
