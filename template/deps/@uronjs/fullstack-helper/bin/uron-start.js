@@ -3,7 +3,9 @@
 const path = require('path');
 const debug = require('debug')('uron:uron-start');
 const serve = require('koa-static');
+{{#client}}
 const build = require('../lib/build');
+{{/client}}
 
 /**
  * Parse Commands
@@ -11,14 +13,18 @@ const build = require('../lib/build');
 const program = require('commander');
 program
     .version(require('../package').version, '-v, --version')
+    {{#client}}
     .option('-B, --build', 'Build files in the beginning')
+    {{/client}}
     .option('-p, --port <port>', 'Web Server Port', parseInt)
     .parse(process.argv);
 
 /**
  * Execute Task
  */
+{{#client}}
 const vusionConfig = global.vusionConfig = require('vusion-cli/config/resolve')();
+{{/client}}
 const uronConfig = global.uronConfig = require('../config/resolve')();
 
 let port;
@@ -29,17 +35,20 @@ if (program.port) {
 }
 
 let promise = Promise.resolve();
+{{#client}}
 if (program.build) {
     promise = build();
 }
+{{/client}}
 
 promise.then(() => {
     const options = Object.assign({}, uronConfig);
 
     const entryFile = path.resolve(process.cwd(), uronConfig.entry);
     const app = require(entryFile)(options);
-
+    {{#client}}
     _staticFile(app);
+    {{/client}}
 
     app.listen(port, (err) => {
         if (err)

@@ -18,7 +18,8 @@ module.exports = {
         metalsmith.metadata(),
         {
           graphql:true,
-          db:true
+          db:true,
+          ndp:false
         },
       )
     }
@@ -57,7 +58,13 @@ module.exports = {
       message: 'Listen port',
       default: '8000'
     },
+    client: {
+      type: 'confirm',
+      message: 'Include client?',
+      default: true
+    },
     ndp: {
+      when:'client',
       type: 'confirm',
       message: 'Use ndp(自动部署)?',
       default: true
@@ -104,6 +111,12 @@ module.exports = {
     "db-migrate/**/*":'db',
     "ndp/**":'ndp',
     'src/server/service/base/**/*': 'db',
+    'deps/@uronjs/fullstack-helper/bin/uron-build*':'client',
+    'src/client/**/*':'client',
+    '.babelrc':'client',
+    'dll/**/*':'client',
+    'vusion*':'client',
+    'webpack*':'client'
   },
   complete: function(data, { chalk }) {
     const green = chalk.green

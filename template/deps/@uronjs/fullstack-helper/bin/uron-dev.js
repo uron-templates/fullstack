@@ -2,7 +2,9 @@
 
 const path = require('path');
 const opn = require('opn');
+{{#client}}
 const { devMiddleware, hotMiddleware } = require('koa-webpack-middleware');
+{{/client}}
 const debug = require('debug')('uron:uron-dev');
 
 /**
@@ -23,7 +25,9 @@ program
 process.env.NODE_ENV = 'development';
 
 const uronConfig = global.uronConfig = require('../config/resolve')();
+{{#client}}
 const vusionConfig = global.vusionConfig = require('vusion-cli/config/resolve')();
+{{/client}}
 
 let port;
 if (program.port) {
@@ -37,10 +41,11 @@ const url = `http://${program.webHost || 'localhost'}:${port}`;
 const options = Object.assign({}, uronConfig);
 const entryFile = path.resolve(process.cwd(), uronConfig.entry);
 const app = require(entryFile)(options);
-
+{{#client}}
 debug('onlyNode?', program.onlyNode);
 if (!program.onlyNode)
     _webpackHotLoad(app);
+{{/client}}
 
 app.listen(port, (err) => {
     if (err)
