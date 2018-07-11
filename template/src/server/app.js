@@ -2,7 +2,7 @@
  * @Author: xuefei
  * @Date: 2018-07-10 09:57:45
  * @Last Modified by: xuefei
- * @Last Modified time: 2018-07-10 16:29:06
+ * @Last Modified time: 2018-07-11 14:48:27
  */
 
 // 将.env中配置到环境变量
@@ -50,12 +50,8 @@ module.exports = (options) => {
     const _use = app.use;
     app.use = (x) => _use.call(app, convert(x));
 
-    // 获取各环境key
-    const key = config.sessionSecret + config.sessionKey;
 
-    app.name = config.name;
     app.keys = config.keys;
-    app.proxy = true;
 
     app.on('error', (error, ctx) => {
         if (!ctx) {
@@ -75,13 +71,15 @@ module.exports = (options) => {
     app.use(bunyanLogger.requestLogger());
     cache(app);
     app.use(session({
-        key,
+        key: config.sessionKey,
+
         store,
         maxAge: 8 * 60 * 60 * 1000,
     }, app));
     app.use(koaBody({
         multipart: false,
     }));
+    app.use(bunyanLogger.printKoaBetterBody());
     handleCustomCode(app);
     // 业务逻辑
     app.use(auth());

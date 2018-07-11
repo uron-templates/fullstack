@@ -57,6 +57,14 @@ app.listen(port, (err) => {
 // 执行 webpack hot middleware and dev middleware
 function _webpackHotLoad(app) {
     const { compiler, devOptions } = require('vusion-cli/lib/dev').prepare(require('vusion-cli/webpack/' + vusionConfig.type));
+    app.use((ctx,next)=>{
+        if(ctx.url==='/'){
+            ctx.url = '/public/index.html'
+            return next()
+        }else if(ctx.url.startsWith('/public')){
+            return next()
+        }
+    })
     app.use(devMiddleware(compiler, devOptions));
     app.use(hotMiddleware(compiler));
 }

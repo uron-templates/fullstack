@@ -93,6 +93,23 @@ module.exports.requestIdContext = function (opts) {
     };
 };
 
+
+module.exports.printKoaBetterBody = function ({body = false,fields = true,files = false} = {}) {
+
+    return function _printKoaBetterBody(ctx, next) {
+        if(!ctx.log)
+            throw new Error('must use(koaBunyanLogger()) before ctx middleware');
+        if(fields)
+            ctx.log.info("[ ctx.fields ]  %O",ctx.request.fields)
+        if(files)
+            ctx.log.info("[ ctx.files ]  %O",ctx.request.files)
+        if(body)
+            ctx.log.info("[ ctx.body ]  %O",ctx.request.body)
+
+        return next();
+    };
+};
+
 /*
  * Logs requests and responses.
  *

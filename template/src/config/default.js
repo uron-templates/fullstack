@@ -1,6 +1,6 @@
 module.exports = {
     name: 'uron',
-    keys: ['xxxxxxx'],
+    keys: ['xxxxxxx','aaaaaaaa','bbbbbbbbbb'], // 会赋值给 app.keys,作为加密 cookie 的 key。
     {{#db}}
     db: {
         host: process.env.db_host,

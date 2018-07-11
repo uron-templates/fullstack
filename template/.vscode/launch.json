@@ -10,7 +10,7 @@
             "name": "dev",
             "restart": false,
             "cwd": "${workspaceRoot}",
-            "args": ["./node_modules/.bin/uron-fullstack-dev"],
+            "args": ["./node_modules/.bin/uron-fullstack-dev","|","bunyan","-L"],
             "console": "integratedTerminal",
             "env": {
                 "DEBUG": "*,-babel",
@@ -25,7 +25,7 @@
             "name": "start",
             "restart": false,
             "cwd": "${workspaceRoot}",
-            "args": ["./node_modules/.bin/uron-fullstack-start"],
+            "args": ["./node_modules/.bin/uron-fullstack-start","|","bunyan","-L"],
             "console": "integratedTerminal",
             "env": {
                 "DEBUG": "*,-babel",
