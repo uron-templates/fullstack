@@ -19,7 +19,7 @@
         "http-proxy": "^1.17.0",
         {{#db}}
         "bookshelf": "^0.13.3",
-        "knex": "^0.15.0",
+        "knex": "~0.14.6",
         "mysql2": "^1.5.3",
         "db-migrate": "^0.11.1",
         "db-migrate-mysql": "^1.1.10",

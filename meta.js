@@ -113,6 +113,7 @@ module.exports = {
     'src/server/service/base/**/*': 'db',
     'deps/@uronjs/fullstack-helper/bin/uron-build*':'client',
     'src/client/**/*':'client',
+    'deps/@uronjs/fullstack-helper/lib/build.js':'client',
     '.babelrc':'client',
     'dll/**/*':'client',
     'vusion*':'client',

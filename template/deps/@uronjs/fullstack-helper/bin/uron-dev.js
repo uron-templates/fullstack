@@ -58,7 +58,7 @@ app.listen(port, (err) => {
 
     console.info(`Server listen on ${port}`);
 });
-
+{{#client}}
 // 执行 webpack hot middleware and dev middleware
 function _webpackHotLoad(app) {
     const { compiler, devOptions } = require('vusion-cli/lib/dev').prepare(require('vusion-cli/webpack/' + vusionConfig.type));
@@ -73,3 +73,4 @@ function _webpackHotLoad(app) {
     app.use(devMiddleware(compiler, devOptions));
     app.use(hotMiddleware(compiler));
 }
+{{/client}}

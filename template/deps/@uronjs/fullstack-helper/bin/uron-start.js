@@ -57,7 +57,7 @@ promise.then(() => {
         console.info(`Server listen on ${port}`);
     });
 });
-
+{{#client}}
 function _staticFile(app) {
     const root = path.join(process.cwd(), './public');
     app.use((ctx, next) => {
@@ -72,3 +72,4 @@ function _staticFile(app) {
         maxage: 1000 * 60 * 60 * 1,
     }));
 }
+{{/client}}

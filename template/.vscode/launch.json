@@ -34,6 +34,7 @@
                 "FORCE_COLOR": "1",
             }
         },
+        {{#client}}
         {
             "type": "node",
             "request": "launch",
@@ -49,6 +50,7 @@
                 "FORCE_COLOR": "1",
             }
         },
+        {{/client}}
         {
             "name": "nodemon",
             "type": "node",
