@@ -26,3 +26,4 @@ uron init fullstack my-project
 ### 运行项目
 - 在根目录下运行`npm run dev`就可以将项目跑起来，默认端口为8000。在初始化项目时，可以修改默认端口，也可以初始化下面之后，在 `uron.config.js` 中进行修改。
 - 本项目配置了 vscode 的调试，在 vscode 的调试界面选择 `dev` ,按`开始调试`按钮就可以以对项目进行调试
+
