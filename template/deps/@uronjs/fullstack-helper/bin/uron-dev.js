@@ -68,6 +68,8 @@ function _webpackHotLoad(app) {
             return next()
         }else if(ctx.url.startsWith('/public')){
             return next()
+        }else if(ctx.url === '/__webpack_hmr'){
+            return next();
         }
     })
     app.use(devMiddleware(compiler, devOptions));

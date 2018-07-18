@@ -12,7 +12,7 @@ program
 const vusionConfig = global.vusionConfig = require('vusion-cli/config/resolve')();
 
 build().then((d) => {
-    console.info('>>> Build Success >>>', d);
+    console.info('>>> Build Success >>>');
 }).catch((e) => {
     console.error('>>> Build Error >>>', e);
 });
