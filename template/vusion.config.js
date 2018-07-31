@@ -20,6 +20,10 @@ module.exports = {
             dashboard: ['babel-polyfill', 'whatwg-fetch', './src/client/views/dashboard/index.js'],
             login: ['babel-polyfill', 'whatwg-fetch', './src/client/views/login/index.js'],
         },
+        output: {
+            path: path.resolve(__dirname, 'public'),
+            publicPath: '/public/',
+        },
         resolve: {
             alias: {
                 vue$: path.resolve(__dirname, 'node_modules/vue/dist/vue.esm.js'),

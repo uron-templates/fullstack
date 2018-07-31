@@ -1,7 +1,7 @@
 
 {{#if true}}.env{{/if}}
 {{#if true}}config/local*{{/if}}
-./public
+public
 __*
 
 # Created by https://www.gitignore.io/api/code,node,linux,macos,windows
