@@ -50,7 +50,7 @@ promise.then(() => {
     _staticFile(app);
     {{/client}}
 
-    app.listen(port, (err) => {
+    app.listen(port,'0.0.0.0', (err) => {
         if (err)
             return console.error(err);
 
