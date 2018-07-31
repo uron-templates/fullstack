@@ -11,6 +11,7 @@ __*
 {{#if true}}.settings/{{/if}}
 {{#if true}}.vscode/*{{/if}}
 {{#if true}}!.vscode/launch.json{{/if}}
+{{#if true}}!.vscode/settings.json{{/if}}
 {{#if true}}tsconfig.json{{/if}}
 {{#if true}}jsconfig.json{{/if}}
 
