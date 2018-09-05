@@ -61,15 +61,17 @@ promise.then(() => {
 function _staticFile(app) {
     const root = path.join(process.cwd(), './public');
     app.use((ctx, next) => {
-        if (ctx.url === '/' || ctx.url === '/public' || ctx.url === '/public/') { // 首页
+        if (ctx.path === '/' || ctx.path === '/public' || ctx.path === '/public/') { // 首页
+            const search = ctx.search;
             ctx.url = '/index.html';
+            if (search) {
+                ctx.url += search;
+            }
             return next();
         } else if (ctx.url.startsWith('/public')) { // public 下面的静态资源
             ctx.url = ctx.url.replace(/^\/public/, '');
             return next();
         }
-    }).use(serve(root, {
-        maxage: 1000 * 60 * 60 * 1,
-    }));
+    }).use(serve(root));
 }
 {{/client}}
