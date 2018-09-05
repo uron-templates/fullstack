@@ -9,9 +9,9 @@
             "@s-utils/*": ["./src/server/utils/*"],
             "@s-middles/*": ["./src/server/middleware/*"],
             {{#db}}
-            "@model": ["./src/server/model/*"],
+            "@model/*": ["./src/server/model/*"],
             {{/db}}
-            "@controller": ["./src/server/controller/*"]
+            "@controller/*": ["./src/server/controller/*"]
         }
     }
 }
