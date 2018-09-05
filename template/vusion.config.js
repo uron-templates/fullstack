@@ -62,14 +62,15 @@ module.exports = {
             }),
             // 将多个 entry chunk 的公共代码打包成公共 chunk
             new webpack.optimize.CommonsChunkPlugin({
+                children: true,
                 name: 'common',
                 minChunks: 3,
             }),
-            // 将子 chunk 的公共代码打包进父 chunk 中
-            new webpack.optimize.CommonsChunkPlugin({
-                children: true,
-                minChunks: 3,
-            }),
+            // // 将子 chunk 的公共代码打包进父 chunk 中
+            // new webpack.optimize.CommonsChunkPlugin({
+            //     children: true,
+            //     minChunks: 3,
+            // }),
         ],
     },
 };
